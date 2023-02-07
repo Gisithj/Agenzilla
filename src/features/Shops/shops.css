@@ -1,0 +1,29 @@
+.shops-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 80px;
+    gap: 2em;
+}
+.shops-table{
+    width:80vw;
+    height: 50vh;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.shops-table table{
+    border: none;
+}
+.shops-table th{
+    background-color: #4979D1;
+    color: white;
+}
+.shops-table th, td {
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.shops-table tr:hover{
+    background-color: rgb(227, 227, 227);
+}

@@ -1,0 +1,129 @@
+.home-container{
+    display: flex;
+    flex-direction: row;
+    margin-left: 80px;
+    gap: 2em;
+}
+.home-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 750px;
+}
+.left-elements{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+.right-elements{
+    width: 100%;
+}
+.top-elements{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+.summary{
+    gap: 1em;
+    height: 150px;
+    width: 200px;
+    background-color: rgb(236, 233, 233);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.summary-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.summary-content h3{
+    color: #4979D1
+}
+.summary-content p{
+    color: rgb(63, 63, 63);
+}
+.top-sellings{
+    height: 150px;
+    width: 400px;
+    background-color: rgb(236, 233, 233);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+.top-sellings-header{
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+}
+.top-selling-content{
+    display: flex;
+    padding: 10px;
+    gap: 4em;
+    
+}
+.order-chart{
+    padding: 20px;
+    margin: 1.5em;
+    border-radius: 15px;
+    background-color: rgb(236, 233, 233);
+}
+.order-chart canvas{
+    width: 80%;
+    height: 70vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.home-table{
+    width:80vw;
+    height: 50vh;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.top-salesreps-container table{
+    border: none;
+    width: 100%;
+    border-radius: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.top-salesreps-container thead{
+    background-color: white;
+    
+}
+.top-salesreps-container tr{
+    background-color: white;
+    color:#121d31;
+    height: 55px;
+}
+.top-salesreps-container th{
+    background-color: white;
+    color:#121d31;
+    height: 100px;
+}
+.top-salesreps-container th,.top-salesreps-container td {
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.top-salesreps-container tr:hover{
+    background-color: rgb(227, 227, 227);
+}
