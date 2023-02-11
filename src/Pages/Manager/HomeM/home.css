@@ -1,14 +1,24 @@
+
 .home-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-left: 80px;
     gap: 2em;
+    background-color: #f0f3fc;
 }
 .home-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 750px;
+}
+.home-header h1{
+    margin-bottom: 0px;
+}
+.dashboard-content{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
 }
 .left-elements{
     display: flex;
@@ -17,65 +27,129 @@
 }
 .right-elements{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 }
 .top-elements{
     display: flex;
     flex-direction: row;
     gap: 2em;
 }
-.summary{
+.orders-summary{
     gap: 1em;
-    height: 150px;
+    height:230px;
     width: 200px;
-    background-color: rgb(236, 233, 233);
+    background-color: rgb(255, 255, 255);
     border-radius: 15px;
     padding: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
-.summary-content{
+.orders-summary-content{
     display: flex;
     flex-direction: column;
+    padding: 10px;
     gap: 1em;
 }
-.summary-content h3{
-    color: #4979D1
+.orders-summary-content canvas{
+    width: 181px !important;
+    height: 140px !important;
 }
-.summary-content p{
+.orders-summary-content h3{
+    color: #4979d1
+}
+.orders-summary-content p{
     color: rgb(63, 63, 63);
 }
 .top-sellings{
-    height: 150px;
-    width: 400px;
-    background-color: rgb(236, 233, 233);
+    height: 230px;
+    width: 200px;
+    background-color: rgb(255, 255, 255);
     border-radius: 15px;
     padding: 10px;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
+    box-shadow: rgba(87, 101, 195, 0.2) 0px 5px 18px 0px;
 }
 .top-sellings-header{
     display: flex;
     align-items: flex-start;
     padding: 10px;
+    color: #4979d1;
+
+}
+.top-selling-content-header {
+    display: flex;
+    padding: 10px;
+    gap: 2em;
+}
+.top-selling-content-header p{    
+    font-size: small;
+    color: #ababab;
 }
 .top-selling-content{
     display: flex;
     padding: 10px;
-    gap: 4em;
-    
+    gap: 5em;
+}
+.sales-summary{
+    height: 230px;
+    width: 200px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    box-shadow: rgba(87, 101, 195, 0.2) 0px 5px 18px 0px;
+}
+.sales-summary-content{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 1em;
+}
+.sales-summary-content h3{
+    color: #4979d1;
+}
+.sales-summary-content h6{
+    font-size: medium;
+    color: #ababab;
+    margin: 0;
 }
 .order-chart{
+    height: 230px;
     padding: 20px;
-    margin: 1.5em;
     border-radius: 15px;
-    background-color: rgb(236, 233, 233);
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(87, 101, 195, 0.2) 0px 5px 18px 0px;
 }
 .order-chart canvas{
     width: 80%;
-    height: 70vh;
+    height: 30vh;
+}
+.orderCompletion-chart{
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(87, 101, 195, 0.2) 0px 5px 18px 0px;
+}
+.orderCompletion-chart canvas{
+    width: 450px !important;
+    height: 200px;
+}
+.top-salesreps-container{
+    color: #ddd;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: rgba(87, 101, 195, 0.2) 0px 5px 18px 0px;
 }
 
 
@@ -102,8 +176,6 @@
     border: none;
     width: 100%;
     border-radius: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
 }
 .top-salesreps-container thead{
     background-color: white;
