@@ -47,13 +47,13 @@ function Sales() {
         </div>
       </div>
       <div>
-        <div className={`tab-content ${isDailyActive ? "active" : ""}`}>
+        <div className={`tab-content ${isDailyActive ? "tabContentActive" : ""}`}>
           This is the daily
         </div>
-        <div className={`tab-content ${isMonthlyActive ? "active" : ""}`}>
+        <div className={`tab-content ${isMonthlyActive ? "tabContentActive" : ""}`}>
           This is the monthly
         </div>
-        <div className={`tab-content ${isFilterActive ? "active" : ""}`}>
+        <div className={`tab-content ${isFilterActive ? "tabContentActive" : ""}`}>
           This is the filter
         </div>
         salesrep sales sales by area

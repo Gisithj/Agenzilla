@@ -2,10 +2,10 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import NavBar from '../../../components/NavBar/NavBar'
 
-function DashboardM() {
+function DashboardM(props) {
   return (
     <div className='dashboard'>
-      <NavBar/>
+      <NavBar user={props.user}/>
       <Outlet/>
     </div>
   )

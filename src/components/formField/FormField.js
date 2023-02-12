@@ -31,6 +31,7 @@ function FormField(props) {
         autoComplete="current-password"
         className="FormField"
         onChange={(e)=>{handleInputChange(e.target.value)}}
+        required = {props.required?props.required:""}
       />
     </div>
   );

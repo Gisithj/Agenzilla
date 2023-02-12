@@ -5,7 +5,8 @@ import { baseUrl } from "./apiConfig";
 export default {
     store(url = baseUrl + 'Stores'){
         return{
-            fetchAll :()=>axios.get(url)
+            fetchAll :()=>axios.get(url),
+            create :(record)=>axios.post(url,record)
         }
     }
        

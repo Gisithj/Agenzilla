@@ -26,7 +26,7 @@ function Dashboard() {
   return (
    
     <div className='dashboard'>
-      <NavBar/>
+      <NavBar user ="salesRep"/>
       <Outlet/>
     </div>
   )

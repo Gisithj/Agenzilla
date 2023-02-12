@@ -1,34 +1,30 @@
 import React, { useState } from "react";
-import "./addSalesRep.css";
+import "./addStore.css";
 import FormField from "../../components/formField/FormField";
 import SuggestComboBox from "../../components/suggest-combo-box/suggestComboBox";
 import { Button } from "@mui/material";
-function AddSalesRep() {
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
-  const [userName, setUsername] = useState("");
-  const [nic, setNic] = useState("");
-  const [password, setPassword] = useState("");
+import storeApi from "../../Api/storeApi";
+import { redirect, useNavigate } from "react-router-dom";
+
+
+
+function AddStore() {
+
+  const [storeName, setStoreName] = useState("");
+  const [ownerName, setOwnerName] = useState("");
+  const [ownerNIC, setOwnerNIC] = useState("");
   const [area, setArea] = useState("");
   const [address, setAddress] = useState("");
   const [contactNO, setContactNO] = useState("");
   const [email, setEmail] = useState("");
+  const [businessRegNo, setBusinessRegNo] = useState("");
 
   
-  const handleFname = (value) => {
-    setFName(value);
+  const handleStoreName = (value) => {
+    setStoreName(value);
   };
-  const handleLname = (value) => {
-    setLName(value);
-  };
-  const handleUsername = (value) => {
-    setUsername(value);
-  };
-  const handlePassword = (value) => {
-    setPassword(value);
-  };
-  const handleNic = (value) => {
-    setNic(value);
+  const handleOwnerName = (value) => {
+    setOwnerName(value);
   };
   const handleArea = (value) => {
     setArea(value);
@@ -42,45 +38,55 @@ function AddSalesRep() {
   const handleEmail = (value) => {
     setEmail(value);
   };
+  const handleBusinessRegNo = (value) => {
+    setBusinessRegNo(value);
+  };
+  const handleOwnerNIC = (value) => {
+    setOwnerNIC(value);
+  };
 
-  const handleAddSalesRep = ()=>{
-    const saleRep = {
-      "userName": userName,
-      "fName": fName,
-      "lname": lName,
-      "address": address,
+  const navigate = useNavigate();
+
+  const handleAddStore = ()=>{
+    const store = {
+      "name": storeName,
       "phoneNo": contactNO,
-      "userType": "SalesRep",
-      "nic": nic,
-      "email": email,
-      "area":area,
-      "password":password
+      "ownerName": ownerName,
+      "address": address,
+      "bRegNo": businessRegNo
     }
+    storeApi
+    .store()
+    .create(store)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => console.log(err));
+    
+    navigate("/manager/shops");
   }
-
-  console.log(userName,password,nic);
 
 
   return (
-    <div className="salesRepAdd-container">
-      <div className="salesRepAdd-header">
-        <h1>Add Sales Representatives </h1>
+    <div className="storeM-container">
+      <div className="storeM-header">
+        <h1>Add a Store </h1>
       </div>
-      <div className="salesRepAdd-form-container">
+      <div className="storeM-form-container">
         <form>
-          <div className="salesRepAdd-form">
+          <div className="storeM-form">
             <div className="field-combined">              
               <FormField
                 type="text"
-                placeHolder ="First name"
+                placeHolder ="Store name"
                 width = {300}
-                handleChange={handleFname}
+                handleChange={handleStoreName}
               />
               <FormField
                 type="text"
-                placeHolder ="Last name"
+                placeHolder ="Owner name"
                 width = {300}
-                handleChange={handleLname}
+                handleChange={handleOwnerName}
               />
             </div>
             
@@ -97,22 +103,23 @@ function AddSalesRep() {
                   placeHolder ="email"
                   width = {300}
                   handleChange={handleEmail}
+                  required ="true"
               />
           </div>
             <div className="field-combined">
               <FormField
                 type="text"
-                placeHolder ="NIC no"
+                placeHolder ="Owner's NIC"
                 width = {300}
-                handleChange={handleNic}
+                handleChange={handleOwnerNIC}
               />
-              
-            <SuggestComboBox
-              name="Area"
-              handleChange={handleArea}
-              storeList={["piliyandala"]}
-            />
-              
+              <FormField
+                  type="text"
+                  placeHolder ="Business Reg-No"
+                  width = {300}
+                  handleChange={handleBusinessRegNo}
+              />      
+                         
             </div>
             <FormField 
               type="text" 
@@ -121,22 +128,15 @@ function AddSalesRep() {
               handleChange={handleAddress}       
             />
             <div className="field-combined">
-            <FormField
-                  type="text"
-                  placeHolder ="Username"
-                  width = {300}
-                  handleChange={handleUsername}
-              />
-               <FormField
-                  type="text"
-                  placeHolder ="Password"
-                  id={"outlined-password-input"}
-                  width = {300}
-                  handleChange={handlePassword}
-              />
+            
+              <SuggestComboBox
+              name="Area"
+              handleChange={handleArea}
+              storeList={["piliyandala"]}
+            />
 
             </div>
-             <div className="salesRepAddBtn">
+             <div className="addStoreBtn">
             <Button
               sx={[
                 {
@@ -147,9 +147,9 @@ function AddSalesRep() {
                 },
               ]}
               variant="contained"
-              onClick={() => handleAddSalesRep()}
+              onClick={() => handleAddStore()}
             >
-              Add Sales Rep
+              Add a Store
             </Button>
           </div>
         
@@ -160,4 +160,4 @@ function AddSalesRep() {
   );
 }
 
-export default AddSalesRep;
+export default AddStore;

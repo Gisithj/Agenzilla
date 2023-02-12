@@ -4,10 +4,10 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import ordersApi from "../../Api/ordersApi";
 
-function Orders() {
+function Orders(props) {
 
   const [orderList, setOrderList] = useState([]);
-  const user='salesRep';
+  const user=props.user;
   
   useEffect(() => {
     ordersApi

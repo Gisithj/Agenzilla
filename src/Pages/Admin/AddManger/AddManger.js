@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import "./addSalesRep.css";
-import FormField from "../../components/formField/FormField";
-import SuggestComboBox from "../../components/suggest-combo-box/suggestComboBox";
+import "./addManger.css";
 import { Button } from "@mui/material";
-function AddSalesRep() {
+import FormField from "../../../components/formField/FormField";
+function AddManger() {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [userName, setUsername] = useState("");
   const [nic, setNic] = useState("");
   const [password, setPassword] = useState("");
-  const [area, setArea] = useState("");
   const [address, setAddress] = useState("");
   const [contactNO, setContactNO] = useState("");
   const [email, setEmail] = useState("");
@@ -29,9 +27,6 @@ function AddSalesRep() {
   };
   const handleNic = (value) => {
     setNic(value);
-  };
-  const handleArea = (value) => {
-    setArea(value);
   };
   const handleAddress = (value) => {
     setAddress(value);
@@ -53,7 +48,6 @@ function AddSalesRep() {
       "userType": "SalesRep",
       "nic": nic,
       "email": email,
-      "area":area,
       "password":password
     }
   }
@@ -62,13 +56,13 @@ function AddSalesRep() {
 
 
   return (
-    <div className="salesRepAdd-container">
-      <div className="salesRepAdd-header">
-        <h1>Add Sales Representatives </h1>
+    <div className="addManager-container">
+      <div className="addManager-header">
+        <h1>Add Manger </h1>
       </div>
-      <div className="salesRepAdd-form-container">
+      <div className="addManager-form-container">
         <form>
-          <div className="salesRepAdd-form">
+          <div className="addManager-form">
             <div className="field-combined">              
               <FormField
                 type="text"
@@ -107,12 +101,6 @@ function AddSalesRep() {
                 handleChange={handleNic}
               />
               
-            <SuggestComboBox
-              name="Area"
-              handleChange={handleArea}
-              storeList={["piliyandala"]}
-            />
-              
             </div>
             <FormField 
               type="text" 
@@ -136,7 +124,7 @@ function AddSalesRep() {
               />
 
             </div>
-             <div className="salesRepAddBtn">
+             <div className="addManagerBtn">
             <Button
               sx={[
                 {
@@ -149,7 +137,7 @@ function AddSalesRep() {
               variant="contained"
               onClick={() => handleAddSalesRep()}
             >
-              Add Sales Rep
+              Add Manager
             </Button>
           </div>
         
@@ -160,4 +148,4 @@ function AddSalesRep() {
   );
 }
 
-export default AddSalesRep;
+export default AddManger;

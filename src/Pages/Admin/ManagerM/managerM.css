@@ -1,38 +1,48 @@
-.shops-container{
+.salesRepM-container{
     display: flex;
     flex-direction: column;
     margin-left: 80px;
     gap: 2em;
 }
-.shops-header{
+.salesRepM-header{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-   
     
 }
-.shops-table-container{
+.salesRepM-table-container{
     height: 80vh;
     overflow: auto;
 }
-.shops-table{
+.salesRepM-table{
     width:80vw;
+    overflow: auto;
     height: 50vh;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
-.shops-table table{
+.salesRepM-table table{
     border: none;
+    overflow: auto;
 }
-.shops-table th{
+.salesRepM-table tr{
+    height: 10px;
+
+}
+.salesRepM-table th{
     background-color: #4979D1;
     color: white;
+    position: sticky;
+    top: 0;
 }
-.shops-table th, td {
+.salesRepM-table th,.salesRepM-table td {
     height: 40px;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
-.shops-table tr:hover{
+.salesRepM-table tr:hover{
     background-color: rgb(227, 227, 227);
 }

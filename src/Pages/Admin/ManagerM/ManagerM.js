@@ -1,16 +1,16 @@
 import { Button, IconButton } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react'
 import DeleteIcon from "@mui/icons-material/Delete";
-import "./salesRepM.css";
-import salesRepApi from '../../Api/salesRepApi';
+import "./managerM.css";
+import salesRepApi from '../../../Api/salesRepApi';
 import { Link } from 'react-router-dom';
 
 
-function SalesRepM(props) {
+function ManagerM() {
 
   const [salesRepData, setSalesRepData] = useState([]);
   const dataFetchedRef = useRef(false);
-  const user = props.user
+
 
   const salesRepDataHandle = async (data)=>{
     data.map((salesRep)=>{
@@ -40,9 +40,9 @@ function SalesRepM(props) {
     <div className="salesRepM-container">
 
         <div className="salesRepM-header">
-        <h1>Manage Sales Representatives </h1>
+        <h1>Manage Managers </h1>
         <div className='button'> 
-                    <Link to={`/${user}/addSalesRep`}>
+                    <Link to={"/admin/addManager"}>
                         <Button
                             sx={[{
                                 backgroundColor:"#FFAF36",
@@ -105,5 +105,5 @@ function SalesRepM(props) {
   )
 }
 
-export default SalesRepM
+export default ManagerM;
 

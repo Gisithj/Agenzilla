@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { BarChart } from "../../../features/Charts/BarChart/BarChaart";
+import { BarChart } from "../../../features/Charts/BarChaart";
 import { UserData } from "../../../features/Charts/data";
-import { DoughnutChart } from "../../../features/Charts/DoughnutChart/DoughnutChart";
+import { DoughnutChart } from "../../../features/Charts/DoughnutChart";
 import { LineChart } from "../../../features/Charts/LineChart/LineChart";
 import { PieChart } from "../../../features/Charts/PieChart/PieChart";
 import "./home.css";
@@ -42,8 +42,8 @@ function HomeM() {
         fill: true,
         label: "Orders",
         data: UserData.map((data) => data.userGain),
-        borderColor: "#4979D1",
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
+        borderColor: "#FFAF36",
+        backgroundColor: "rgb(255,175,54,0.5)",
       },
     ],
   };

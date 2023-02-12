@@ -28,7 +28,7 @@ function AddBatch() {
            
             
            
-             <div className="orderPlacementBtn">
+             <div className="AddBatchBtn">
             <Button
               sx={[
                 {
@@ -40,7 +40,7 @@ function AddBatch() {
               ]}
               variant="contained"
             >
-              Place Order
+              Add a Batch
             </Button>
           </div>
         
