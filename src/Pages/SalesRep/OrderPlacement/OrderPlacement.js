@@ -4,7 +4,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import storeApi from "../../../Api/storeApi";
+import storeApi, { store } from "../../../Api/storeApi";
 import SuggestComboBox from "../../../components/suggest-combo-box/suggestComboBox";
 import FormField from "../../../components/formField/FormField";
 
@@ -59,8 +59,8 @@ function OrderPlacement() {
   useEffect(() => {
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
-    storeApi
-      .store()
+
+      store()
       .fetchAll()
       .then((response) => {
         storeDataHandle(response.data);

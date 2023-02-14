@@ -4,17 +4,18 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import "./managerM.css";
 import salesRepApi from '../../../Api/salesRepApi';
 import { Link } from 'react-router-dom';
+import { Delete } from '@mui/icons-material';
 
 
 function ManagerM() {
 
-  const [salesRepData, setSalesRepData] = useState([]);
+  const [managerData, setManagerData] = useState([]);
   const dataFetchedRef = useRef(false);
 
 
-  const salesRepDataHandle = async (data)=>{
+  const managerDataHandle = async (data)=>{
     data.map((salesRep)=>{
-      return setSalesRepData(salesRepData => [...salesRepData, salesRep.name]);
+      return setManagerData(salesRepData => [...salesRepData, salesRep.name]);
     })}
 
 
@@ -23,7 +24,7 @@ function ManagerM() {
   }
   const handleAddUser= (id)=>{
     salesRepApi.user().create().then(response=>{
-      salesRepDataHandle(response.data)
+      managerDataHandle(response.data)
   }).catch(err=>console.log(err))
   }
 
@@ -31,15 +32,15 @@ function ManagerM() {
     if (dataFetchedRef.current) return;
       dataFetchedRef.current = true;
       salesRepApi.user().fetchAll().then(response=>{
-        salesRepDataHandle(response.data)
+        managerDataHandle(response.data)
     }).catch(err=>console.log(err))
   },[]
   );
 
   return (
-    <div className="salesRepM-container">
+    <div className="managerM-container">
 
-        <div className="salesRepM-header">
+        <div className="managerM-header">
         <h1>Manage Managers </h1>
         <div className='button'> 
                     <Link to={"/admin/addManager"}>
@@ -56,31 +57,27 @@ function ManagerM() {
                     </Link>
         </div>
       </div>
-          <div className="salesRepM-table-container">
-            <table className="salesRepM-table">
+          <div className="managerM-table-container">
+            <table className="managerM-table">
               <thead>
                 <tr>
-                  <th>SalesRep_Id</th>
+                  <th>manager_Id</th>
                   <th>Name</th>
                   <th>Address</th>
                   <th>Contact No</th>
-                  <th>NIC</th>
+                  <th colSpan={2}>NIC</th>
                 </tr>
               </thead>
               <tbody>
-                {/* {salesRepData.map((item) => {
+                {/* {managerData.map((manager) => {
                   return [
-                    <tr key={item.id}>
-                      <td>{item.beverageName}</td>
-                      <td>{item.beverageName}</td>
-                      <td className="lastColumnWithDeleteIcon">
-                        <div>{item.quantity}</div>
-                        <div>
-                          <IconButton variant="outlined" onClick={()=>handleDeleteUser(item.id)} >
-                            <DeleteIcon className="deleteOrderListItem"/>
-                          </IconButton>
-                        </div>
-                      </td>
+                    <tr key={manager.id}>
+                      <td>{manager.id}</td>
+                      <td>{manager.name}</td>
+                      <td>{manager.address}</td>
+                      <td>{manager.phoneNo}</td>
+                      <td>{manager.NIC}</td>
+                      <td><IconButton><Delete className='deleteManager'/></IconButton></td>
                     </tr>,
                   ];
                 })} */}
@@ -90,6 +87,7 @@ function ManagerM() {
                   <td>gg</td>
                   <td>gg</td>
                   <td>gg</td>
+                  <td><IconButton><Delete className='deleteManager'/></IconButton></td>
                 </tr>
                 <tr>
                   <td>gg</td>

@@ -15,20 +15,20 @@ function NavBar(props) {
   return (
     <div className='nav-bar'>
         
-        <NavLink to={`dashboard`} 
+        {props.user !=="salesRep" && <NavLink to={`dashboard`} 
                     className={({ isActive, isPending }) =>
                       isActive? "activeNavItem": isPending? "pending": ""
                     }>
                     <div className='nav-bar-item'><HomeIcon fontSize='large'/></div>
-        </NavLink>
+        </NavLink>}
         {props.user ==="admin" && <NavLink to={`managers`}><div className='nav-bar-item'><ManageAccountsIcon fontSize='large'/></div></NavLink>}
         {props.user ==="admin" && <NavLink to={`managers`}><div className='nav-bar-item'><ManageAccountsIcon fontSize='large'/></div></NavLink>}
         {props.user !=="salesRep" && <NavLink to={`manageSalesRep`}><div className='nav-bar-item'><GroupsIcon fontSize='large'/></div></NavLink>}
         {props.user !=="salesRep" && <NavLink to={`manageSales`}><div className='nav-bar-item'><InsightsIcon fontSize='large'/></div></NavLink>}
-        {props.user ==="salesRep" && <NavLink to={`delivery`}><div className='nav-bar-item'><LocalShippingIcon fontSize='large'/></div></NavLink>}        
+        <NavLink to={`stocks`}><div className='nav-bar-item'><BarChartIcon fontSize='large'/></div></NavLink> 
+        {props.user ==="salesRep" && <NavLink to={`delivery`}><div className='nav-bar-item'><LocalShippingIcon fontSize='large'/></div></NavLink>}              
         <NavLink to={`shops`}><div className='nav-bar-item'><StoreIcon fontSize='large'/></div></NavLink>
-        <NavLink to={`orders`}><div className='nav-bar-item'><AssignmentIcon fontSize='large'/></div></NavLink>
-        <NavLink to={`stocks`}><div className='nav-bar-item'><BarChartIcon fontSize='large'/></div></NavLink>
+        <NavLink to={`orders`}><div className='nav-bar-item'><AssignmentIcon fontSize='large'/></div></NavLink>        
         <NavLink to={`profile`}><div className='nav-bar-item'><PersonIcon fontSize='large'/></div></NavLink> 
 
 

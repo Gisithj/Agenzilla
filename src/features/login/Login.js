@@ -15,7 +15,7 @@ function Login() {
     // const inputRef = React.useRef(null);
 
     const[username,setUsername] = useState("");
-    // const[password,setPassword] = useState("")
+    const[password,setPassword] = useState("")
   
     // React.useEffect(() => {
     //   if (inputRef.current) {
@@ -24,21 +24,29 @@ function Login() {
     // }, []);
   
     if (loggedUser) {
+        console.log("in logged user");
         console.log(loggedUser);
-        return navigate("/salesRep");
+        return navigate("/salesRep/stocks");
         
     }
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(user);
-      doLogin(dispatch, username);
-      setUser("");
+      const user = {
+        userName:username,
+        password:password
+      }
+      
+      doLogin(dispatch, user);
+      setUser(user);
     };
 
     
 
     const handleUsernameInput = (value)=>{
         setUsername(value)
+    }
+    const handlePasswordInput = (value)=>{
+        setPassword(value)
     }
 
   return (
@@ -53,7 +61,9 @@ function Login() {
                 color="blue"
                 handleChange={handleUsernameInput}
                 />
-                <FormField placeHolder="Password" type="password" />
+                <FormField placeHolder="Password" type="password"
+                    handleChange={handlePasswordInput}
+                 />
                     <Button
                         sx={[{
                             backgroundColor:"#1976d2",

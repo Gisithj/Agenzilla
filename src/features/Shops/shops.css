@@ -36,3 +36,6 @@
 .shops-table tr:hover{
     background-color: rgb(227, 227, 227);
 }
+.deleteStore{
+    color: red;
+}

@@ -4,6 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import "./salesRepM.css";
 import salesRepApi from '../../Api/salesRepApi';
 import { Link } from 'react-router-dom';
+import { Delete } from '@mui/icons-material';
 
 
 function SalesRepM(props) {
@@ -37,71 +38,68 @@ function SalesRepM(props) {
   );
 
   return (
-    <div className="salesRepM-container">
-
-        <div className="salesRepM-header">
-        <h1>Manage Sales Representatives </h1>
-        <div className='button'> 
-                    <Link to={`/${user}/addSalesRep`}>
-                        <Button
-                            sx={[{
-                                backgroundColor:"#FFAF36",
-                                width:'15em',
-                                height:'3em',
-                                boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'
-                            }]}
-                            variant="contained">
-                               Add SalesRep
-                        </Button>
-                    </Link>
-        </div>
-      </div>
-          <div className="salesRepM-table-container">
-            <table className="salesRepM-table">
-              <thead>
-                <tr>
-                  <th>SalesRep_Id</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>Contact No</th>
-                  <th>NIC</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* {salesRepData.map((item) => {
-                  return [
-                    <tr key={item.id}>
-                      <td>{item.beverageName}</td>
-                      <td>{item.beverageName}</td>
-                      <td className="lastColumnWithDeleteIcon">
-                        <div>{item.quantity}</div>
-                        <div>
-                          <IconButton variant="outlined" onClick={()=>handleDeleteUser(item.id)} >
-                            <DeleteIcon className="deleteOrderListItem"/>
-                          </IconButton>
-                        </div>
-                      </td>
-                    </tr>,
-                  ];
-                })} */}
-                <tr>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                </tr>
-                <tr>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                </tr>
-              </tbody>
-            </table>
+    <div>
+      <div className="salesRepM-container">
+          <div className="salesRepM-header">
+          <h1>Manage Sales Representatives </h1>
+          <div className='button'>
+                      <Link to={`/${user}/addSalesRep`}>
+                          <Button
+                              sx={[{
+                                  backgroundColor:"#FFAF36",
+                                  width:'15em',
+                                  height:'3em',
+                                  boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'
+                              }]}
+                              variant="contained">
+                                 Add SalesRep
+                          </Button>
+                      </Link>
           </div>
         </div>
+            <div className="salesRepM-table-container">
+              <table className="salesRepM-table">
+                <thead>
+                  <tr>
+                    <th>SalesRep_Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact No</th>
+                    <th colSpan={2}>NIC</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* {salesRepData.map((item) => {
+                    return [
+                      <tr key={item.id}>
+                        <td>{item.beverageName}</td>
+                        <td>{item.address}</td>
+                        <td{item.phoneNo}</td>
+                        <td{item.NIC}</td>
+                        <td><IconButton><Delete className='deleteSalesRep'/></IconButton></td>
+                      </tr>,
+                    ];
+                  })} */}
+                  <tr>
+                    <td>gg</td>
+                    <td>gg</td>
+                    <td>gg</td>
+                    <td>gg</td>
+                    <td>gg</td>
+                    <td><IconButton><Delete className='deleteSalesRep'/></IconButton></td>
+                  </tr>
+                  <tr>
+                    <td>gg</td>
+                    <td>gg</td>
+                    <td>gg</td>
+                    <td>gg</td>
+                    <td>gg</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </div>
   )
 }
 

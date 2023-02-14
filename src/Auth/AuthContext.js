@@ -1,5 +1,6 @@
 import React from "react";
 import getUser from "../Api/userApi";
+import { userLogin } from "../Api/registerUser";
 // import history from "./history";
 
 const AuthStateContext = React.createContext();
@@ -45,12 +46,13 @@ async function doLogin(dispatch, user) {
   try {
     
     dispatch({ status: "pending" });
-
-    const result = await getUser(user);
+    console.log(user);
+    var result = await (await userLogin().create(user)).data;
+    
     console.log("here");
     dispatch({
       status: "resolved",
-      user: result,
+      user: result.user,
       error: null
     });
   } catch (error) {

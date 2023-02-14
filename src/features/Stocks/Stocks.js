@@ -2,24 +2,40 @@ import React, { useEffect, useState } from 'react'
 import './stocks.css'
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
-import stocksApi from '../../Api/stocksApi';
+import {item,items, leastItems, mostItems} from '../../Api/stocksApi'
 
 function Stocks(props) {
 
     const [stocksList, setstocksList] = useState([]);
+    const [mostItem, setMostItem] = useState("");
+    const [leastItem, setLeastItem] = useState("");
     const user=props.user;
 
     useEffect(() => {
-        stocksApi
-          .item()
+        
+        item()
           .fetchAll()
           .then((response) => {
             setstocksList(response.data);
           })
           .catch((err) => console.log(err));
 
+        mostItems()
+          .fetchAll()
+          .then((response)=>{
+            setMostItem(response.data);
+          })
+        leastItems()
+          .fetchAll()
+          .then((response)=>{
+            setLeastItem(response.data);
+          })
         
-      }, []);
+        },[setLeastItem,setMostItem,setstocksList]);
+        if((mostItem|| leastItem || stocksList)===undefined){
+            console.log("ggg");
+            return null;
+        }
 
   return (
     <div className='stocks-container'>
@@ -59,18 +75,6 @@ function Stocks(props) {
                         </tr>
                         ]
                     })}
-
-                    
-                    <tr>
-                        <td>10</td>
-                        <td>Sprite</td>
-                        <td>300</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>Sprite</td>
-                        <td>300</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -78,15 +82,11 @@ function Stocks(props) {
     <div className='stock-cards-container'>
         <div className='stock-cards db'>
             <h3>Most available beverage</h3>
-            <h2>Pepsi</h2>
+            <h2>{mostItem.name}</h2>
         </div>
         <div className='stock-cards lb'>
             <h3>Least available beverage</h3>
-            <h2>Pepsi</h2>
-        </div>
-        <div className='stock-cards w'>
-            <h3>Last dispatched store</h3>
-            <h2>Pepsi</h2>
+            <h2>{leastItem.name}</h2>
         </div>
     </div>
 </div>

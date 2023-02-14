@@ -1,21 +1,21 @@
-.salesRepM-container{
+.managerM-container{
     display: flex;
     flex-direction: column;
     margin-left: 80px;
     gap: 2em;
 }
-.salesRepM-header{
+.managerM-header{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     
 }
-.salesRepM-table-container{
+.managerM-table-container{
     height: 80vh;
     overflow: auto;
 }
-.salesRepM-table{
+.managerM-table{
     width:80vw;
     overflow: auto;
     height: 50vh;
@@ -24,25 +24,28 @@
     padding-top: 30px;
     padding-bottom: 30px;
 }
-.salesRepM-table table{
+.managerM-table table{
     border: none;
     overflow: auto;
 }
-.salesRepM-table tr{
+.managerM-table tr{
     height: 10px;
 
 }
-.salesRepM-table th{
+.managerM-table th{
     background-color: #4979D1;
     color: white;
     position: sticky;
     top: 0;
 }
-.salesRepM-table th,.salesRepM-table td {
+.managerM-table th,.managerM-table td {
     height: 40px;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
-.salesRepM-table tr:hover{
+.managerM-table tr:hover{
     background-color: rgb(227, 227, 227);
+}
+.deleteManager{
+    color: red;
 }

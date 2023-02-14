@@ -3,7 +3,7 @@ import "./addStore.css";
 import FormField from "../../components/formField/FormField";
 import SuggestComboBox from "../../components/suggest-combo-box/suggestComboBox";
 import { Button } from "@mui/material";
-import storeApi from "../../Api/storeApi";
+import {store} from "../../Api/storeApi";
 import { redirect, useNavigate } from "react-router-dom";
 
 
@@ -48,16 +48,16 @@ function AddStore() {
   const navigate = useNavigate();
 
   const handleAddStore = ()=>{
-    const store = {
+    const storeN = {
       "name": storeName,
       "phoneNo": contactNO,
       "ownerName": ownerName,
       "address": address,
       "bRegNo": businessRegNo
     }
-    storeApi
-    .store()
-    .create(store)
+    
+    store()
+    .create(storeN)
     .then((response) => {
       console.log(response);
     })

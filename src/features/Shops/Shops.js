@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from "react";
 import "./shops.css";
-import storeApi from "../../Api/storeApi";
+import storeApi, { store, storeDelete } from "../../Api/storeApi";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
+import { Delete } from "@mui/icons-material";
 
 function Shops(props) {
   const [storeList, setStoreList] = useState([]);
 
   useEffect(() => {
-    storeApi
-      .store()
+    store()
       .fetchAll()
       .then((response) => {
         setStoreList(response.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [storeList]);
 
   
   const user=props.user;
+
+  const handleStoreDelete = (storeID)=>{
+    storeDelete()
+      .delete(storeID)
+      .catch((err) => console.log(err));
+  }
   return (
     <div className="shops-container">
     <div className='shops-header'>
@@ -48,7 +54,7 @@ function Shops(props) {
                 <th>Store name</th>
                 <th>Owner name</th>
                 <th>Address</th>
-                <th>Contact No</th>
+                <th colSpan={2}>Contact No</th>
               </tr>
             </thead>
             <tbody>
@@ -60,6 +66,9 @@ function Shops(props) {
                     <td>{store.ownerName}</td>
                     <td>{store.address}</td>
                     <td>{store.phoneNo}</td>
+                    {props.user !=="salesRep" && <td><IconButton
+                      onClick={()=>handleStoreDelete(store.storeID)}                     
+                      ><Delete className="deleteStore"/></IconButton></td>}
                   </tr>
                 ];
               })}

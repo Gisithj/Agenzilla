@@ -3,6 +3,8 @@ import "./addSalesRep.css";
 import FormField from "../../components/formField/FormField";
 import SuggestComboBox from "../../components/suggest-combo-box/suggestComboBox";
 import { Button } from "@mui/material";
+import { userRegistration } from "../../Api/registerUser";
+
 function AddSalesRep() {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
@@ -50,12 +52,14 @@ function AddSalesRep() {
       "lname": lName,
       "address": address,
       "phoneNo": contactNO,
-      "userType": "SalesRep",
+      "userType": "salesRep",
       "nic": nic,
       "email": email,
       "area":area,
       "password":password
     }
+
+    userRegistration().create(saleRep).catch((err) => console.log(err));
   }
 
   console.log(userName,password,nic);
