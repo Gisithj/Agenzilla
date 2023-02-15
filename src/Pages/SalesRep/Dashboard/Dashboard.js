@@ -20,6 +20,8 @@ function Dashboard() {
       console.log("not logged in");
       return navigate("/login");
   
+    } else if(loggedUser.salesRepID){
+      return navigate("/salesRep/stocks");
     }
   },[])
 

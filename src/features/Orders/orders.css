@@ -11,10 +11,16 @@
     justify-content: space-between;
     
 }
+.orders-table-container{
+    height: 80vh;
+    overflow: auto;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(87, 101, 195, 0.2) 0px 5px 18px 0px;
+}
 .orders-table{
     width:80vw;
     height: 50vh;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 30px;
     padding-top: 30px;
     padding-bottom: 30px;

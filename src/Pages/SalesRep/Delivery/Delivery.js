@@ -2,7 +2,7 @@ import { Delete } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import React, { useEffect, useState } from 'react'
-import ordersApi from '../../../Api/ordersApi';
+import { orders } from '../../../Api/ordersApi';
 import './delivery.css'
 
 function Delivery() {
@@ -10,8 +10,7 @@ function Delivery() {
   const [orderList, setOrderList] = useState([]);
 
     useEffect(() => {
-        ordersApi
-          .orders()
+          orders()
           .fetchAll()
           .then((response) => {
             setOrderList(response.data);
@@ -44,11 +43,11 @@ function Delivery() {
           {
             orderList.map((order)=>{
               return[
-                <tr>
+                <tr key={order.orderID}>
               <td>order.orderID</td>
               <td>order.storeID</td>
               <td>order.itemID</td>
-              <td colSpan={order.deliveryStaus === "delivered" && 2}>Pending</td>
+              <td colSpan={order.deliveryStaus === "delivered" ? 2:undefined}>Pending</td>
               <td>{order.deliveyStaus !== "delivered" && <IconButton><TaskAltIcon/></IconButton>}</td>
             </tr>
               ]

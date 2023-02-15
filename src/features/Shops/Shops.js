@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./shops.css";
-import storeApi, { store, storeDelete } from "../../Api/storeApi";
-import axios from "axios";
+import { store, storeDelete } from "../../Api/storeApi";
 import { Link } from "react-router-dom";
 import { Button, IconButton } from "@mui/material";
 import { Delete } from "@mui/icons-material";
@@ -16,7 +15,7 @@ function Shops(props) {
         setStoreList(response.data);
       })
       .catch((err) => console.log(err));
-  }, [storeList]);
+  });
 
   
   const user=props.user;

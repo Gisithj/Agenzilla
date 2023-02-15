@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./orderPlacement.css";
+import "./batchPlacement.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
@@ -9,13 +9,13 @@ import SuggestComboBox from "../../../components/suggest-combo-box/suggestComboB
 import FormField from "../../../components/formField/FormField";
 import { item } from "../../../Api/stocksApi";
 
-function OrderPlacement(props) {
+function BatchPlacement(props) {
   const [storeData, setStoreData] = useState([]);
   const [beverageData, setBeverageData] = useState([]);
   const [storeName, setStoreName] = useState("");
   const [beverageName, setBeverageName] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [orderItems, setOrderItems] = useState([]);
+  const [batchItems, setBatchItems] = useState([]);
   const [nextId, setNextId] = useState(1);
   const dataFetchedRef = useRef(false);
 
@@ -36,20 +36,20 @@ function OrderPlacement(props) {
     //console.log(beverageName);
     //console.log(storeName);
     if (beverageName !== "" || quantity !== "") {
-      var orderItem = {
+      var batchItem = {
         id: nextId,
         beverageName: beverageName,
         quantity: quantity,
       };
       setNextId(nextId + 1);
-      setOrderItems([...orderItems, orderItem]);
+      setBatchItems([...batchItems, batchItem]);
     }
     //console.log(orderItems);
   };
 
-  const handleDeleteOrderItem = (id) => {
+  const handleDeleteBatchItem = (id) => {
     console.log("delete called");
-    setOrderItems(orderItems.filter((a) => a.id !== id));
+    setBatchItems(batchItems.filter((a) => a.id !== id));
   };
 
   const storeDataHandle = async (data) => {
@@ -85,31 +85,37 @@ function OrderPlacement(props) {
   }
 
   return (
-    <div className="orders-placement-container">
-      <div className="order-placement-header">
-        <h1>Place Order</h1>
+    <div className="batch-placement-container">
+      <div className="batch-placement-header">
+        <h1>Place Batch</h1>
       </div>
-      <div className="orderForm_Table_Container">
+      <div className="batchForm_Table_Container">
         <div>
           <form action="">
-            <div className="order-placement">
-              <div className="order-content">
+            <div className="batch-placement">
+              <div className="batch-content">
                 <SuggestComboBox
-                  name="Store name"
+                  name="Company name"
                   handleChange={handleStoreName}
                   storeList={storeData}
                 />
               </div>
-              <div className="order-details">
-                <div className="oder-details-head">
-                  <div className="order-content">
+              <div className="batch-content">
+              <FormField
+                      placeHolder="BatchID"
+                      handleChange={handleQuantity}
+                    />
+              </div>
+              <div className="batch-details">
+                <div className="batch-details-head">
+                  <div className="batch-content">
                     <SuggestComboBox
                       name="Beverage name"
                       handleChange={handleBeverageName}
                       storeList={beverageData}
                     />
                   </div>
-                  <div className="order-content">
+                  <div className="batch-content">
                     <FormField
                       placeHolder="Quantity"
                       handleChange={handleQuantity}
@@ -124,7 +130,7 @@ function OrderPlacement(props) {
               </div>
             </div>
           </form>
-          <div className="orderPlacementBtn">
+          <div className="batchPlacementBtn">
             <Button
               sx={[
                 {
@@ -140,8 +146,8 @@ function OrderPlacement(props) {
             </Button>
           </div>
         </div>
-        <div className="orders-placement-table-container">
-          <table className="orders-placement-table">
+        <div className="batch-placement-table-container">
+          <table className="batch-placement-table">
             <thead>
               <tr>
                 <th>No</th>
@@ -150,7 +156,7 @@ function OrderPlacement(props) {
               </tr>
             </thead>
             <tbody>
-              {orderItems.map((item) => {
+              {batchItems.map((item) => {
                 return [
                   <tr key={item.id}>
                     <td>{item.beverageName}</td>
@@ -160,7 +166,7 @@ function OrderPlacement(props) {
                       <div>
                         <IconButton
                           variant="outlined"
-                          onClick={() => handleDeleteOrderItem(item.id)}
+                          onClick={() => handleDeleteBatchItem(item.id)}
                         >
                           <DeleteIcon className="deleteOrderListItem" />
                         </IconButton>
@@ -177,4 +183,4 @@ function OrderPlacement(props) {
   );
 }
 
-export default OrderPlacement;
+export default BatchPlacement;

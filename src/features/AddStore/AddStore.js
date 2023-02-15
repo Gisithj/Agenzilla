@@ -8,7 +8,7 @@ import { redirect, useNavigate } from "react-router-dom";
 
 
 
-function AddStore() {
+function AddStore(props) {
 
   const [storeName, setStoreName] = useState("");
   const [ownerName, setOwnerName] = useState("");
@@ -63,7 +63,7 @@ function AddStore() {
     })
     .catch((err) => console.log(err));
     
-    navigate("/manager/shops");
+    navigate(`/${props.user}/shops`);
   }
 
 

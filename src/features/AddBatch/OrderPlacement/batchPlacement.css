@@ -1,0 +1,114 @@
+.batch-placement-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 80px;
+    gap: 1.5em;
+}
+.batch-placement-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 750px;
+}
+.batchForm_Table_Container{
+    display: flex;
+    gap: 30px;
+    overflow: auto;
+}
+.batch-placement{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    background-color: #fbead4;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: 330px;
+    width: 660px;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+}
+.store-field{
+    width: 400px;
+}
+.batch-details{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    background-color: #ffffff;
+    height: 200px;
+    width: 600px;
+    align-items:center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+.batch-details-head{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    
+}
+.batch-content{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: space-between;
+
+}
+.details select{
+    width: 200px;
+}
+.btn-add{
+    color: #ffaf3f;
+}
+.batch-placement-table-container{
+    height: 400px;
+    overflow: auto;
+}
+.batch-placement-table{
+    width:450px;
+    height: 400px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.lastColumnWithDeleteIcon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 0;
+    height: 96%;
+}
+.deleteBatchListItem{
+    margin-left: 5px;
+    color: red;
+}
+.batchPlacementBtn{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+.batch-placement-table table{
+    border: none;
+    height: 400px;
+    overflow: auto;
+}
+.batch-placement-table th{
+    background-color: #4979D1;
+    color: white;
+    z-index: 100;
+}
+.batch-placement-table th, td {
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.batch-placement-table tr{
+    height: 10px;
+}
+.batch-placement-table tr:hover{
+    background-color: rgb(227, 227, 227);
+}

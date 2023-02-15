@@ -3,9 +3,10 @@ import "./addSalesRep.css";
 import FormField from "../../components/formField/FormField";
 import SuggestComboBox from "../../components/suggest-combo-box/suggestComboBox";
 import { Button } from "@mui/material";
-import { userRegistration } from "../../Api/registerUser";
+import { salesRepRegistration } from "../../Api/registerUserApi";
+import { useNavigate } from "react-router-dom";
 
-function AddSalesRep() {
+function AddSalesRep(props) {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [userName, setUsername] = useState("");
@@ -45,24 +46,30 @@ function AddSalesRep() {
     setEmail(value);
   };
 
+  const navigate = useNavigate();
   const handleAddSalesRep = ()=>{
     const saleRep = {
+      "area":area,
       "userName": userName,
       "fName": fName,
       "lname": lName,
       "address": address,
       "phoneNo": contactNO,
-      "userType": "salesRep",
       "nic": nic,
-      "email": email,
-      "area":area,
+      "email": email,      
       "password":password
     }
 
-    userRegistration().create(saleRep).catch((err) => console.log(err));
+    salesRepRegistration()
+    .create(saleRep)
+    .then((response)=>{
+      console.log(response);
+    })
+    .catch((err) => console.log(err));
+
+    navigate(`/${props.user}/manageSalesRep`);
   }
 
-  console.log(userName,password,nic);
 
 
   return (

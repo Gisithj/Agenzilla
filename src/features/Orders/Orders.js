@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./orders.css";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import ordersApi from "../../Api/ordersApi";
+import  { orders,orderDelete } from "../../Api/ordersApi";
+import { IconButton } from "@mui/material";
+import { Delete } from "@mui/icons-material";
 
 function Orders(props) {
 
@@ -10,14 +12,20 @@ function Orders(props) {
   const user=props.user;
   
   useEffect(() => {
-    ordersApi
-      .orders()
+    orders()
       .fetchAll()
       .then((response) => {
         setOrderList(response.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  });
+
+  
+  const handleOrderDelete = (orderID)=>{
+    orderDelete()
+      .delete(orderID)
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div className="orders-container">
@@ -47,7 +55,7 @@ function Orders(props) {
                 <th>Store name</th>
                 <th>Date</th>
                 <th>Address</th>
-                <th>Status</th>
+                <th colSpan={2}>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -58,6 +66,9 @@ function Orders(props) {
                 <td>{order.date}</td>
                 <td>{order.date}</td>
                 <td>{order.date}</td>
+                {props.user !=="salesRep" && <td><IconButton
+                      onClick={()=>handleOrderDelete(order.orderID)}                     
+                      ><Delete className="deleteStore"/></IconButton></td>}
               </tr>]
               })}
               

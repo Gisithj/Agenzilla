@@ -21,7 +21,7 @@ function NavBar(props) {
                     }>
                     <div className='nav-bar-item'><HomeIcon fontSize='large'/></div>
         </NavLink>}
-        {props.user ==="admin" && <NavLink to={`managers`}><div className='nav-bar-item'><ManageAccountsIcon fontSize='large'/></div></NavLink>}
+        
         {props.user ==="admin" && <NavLink to={`managers`}><div className='nav-bar-item'><ManageAccountsIcon fontSize='large'/></div></NavLink>}
         {props.user !=="salesRep" && <NavLink to={`manageSalesRep`}><div className='nav-bar-item'><GroupsIcon fontSize='large'/></div></NavLink>}
         {props.user !=="salesRep" && <NavLink to={`manageSales`}><div className='nav-bar-item'><InsightsIcon fontSize='large'/></div></NavLink>}

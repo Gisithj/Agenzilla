@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
-import Home from './Pages/SalesRep/Home/Home';
 import Login from './features/login/Login';
 import Dashboard from './Pages/SalesRep/Dashboard/Dashboard';
 import Delivery from './Pages/SalesRep/Delivery/Delivery';
@@ -22,6 +21,8 @@ import AddBatch from './features/AddBatch/AddBatch';
 import AddStore from './features/AddStore/AddStore';
 import AddManger from './Pages/Admin/AddManger/AddManger';
 import ManagerM from './Pages/Admin/ManagerM/ManagerM';
+import CommonLogin from './Pages/commonLogin/CommonLogin';
+import BatchPlacement from './features/AddBatch/OrderPlacement/BatchPlacement';
 
 
 const router = createBrowserRouter([
@@ -31,8 +32,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       {
-        path: "/login",
+        path: "/login/admin",
         element: <Login />,
+      },
+      {
+        path:"/login",
+        element:<CommonLogin/>
       },
       {
         path: "/salesRep",
@@ -54,7 +59,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/salesRep/order-placement",
-            element: <OrderPlacement/>,           
+            element: <OrderPlacement user="salesRep"/>,           
           },
           {
             path: "/salesRep/profile",
@@ -90,7 +95,7 @@ const router = createBrowserRouter([
           },
           {
             path:"/manager/addSalesRep",
-            element:<AddSalesRep/>
+            element:<AddSalesRep user="manager"/>
           },
           {
             path:"/manager/stocks",
@@ -102,7 +107,7 @@ const router = createBrowserRouter([
           },
           {
             path:"/manager/addStore",
-            element:<AddStore/>
+            element:<AddStore user="manager"/>
           },
           {
             path:"/manager/orders",
@@ -111,11 +116,11 @@ const router = createBrowserRouter([
           
           {
             path: "/manager/order-placement",
-            element: <OrderPlacement/>,           
+            element: <OrderPlacement user="manager"/>,           
           },
           {
             path:"/manager/addBatch",
-            element:<AddBatch/>
+            element:<AddBatch user="manager"/>
           }
 
         ],
@@ -135,7 +140,7 @@ const router = createBrowserRouter([
           },          
           {
             path:"/admin/addSalesRep",
-            element:<AddSalesRep/>
+            element:<AddSalesRep user="admin"/>
           },
           {
             path:"/admin/managers",
@@ -151,7 +156,7 @@ const router = createBrowserRouter([
           },
           {
             path:"/admin/addStore",
-            element:<AddStore/>
+            element:<AddStore user="admin"/>
           },
           {
             path: "/admin/profile",
@@ -171,11 +176,11 @@ const router = createBrowserRouter([
           },          
           {
             path: "/admin/order-placement",
-            element: <OrderPlacement/>,           
+            element: <OrderPlacement user="admin"/>,           
           },
           {
             path:"/admin/addBatch",
-            element:<AddBatch/>
+            element:<BatchPlacement user="admin"/>
           }
 
         ],

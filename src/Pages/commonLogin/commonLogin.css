@@ -1,0 +1,95 @@
+.sales-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 80px;
+    gap: 0em;
+    align-items: center;
+}
+.login-tabs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-tab-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 27.5%;
+    z-index: 100;
+}
+.tab{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+    background-color: #4979D1;
+    cursor: pointer;
+    width: 100%;
+
+}
+.tab-content{
+    display: none;
+    height: 300px;
+    width: 100%;
+    background-color: whitesmoke;
+
+}
+.tabContentActive{
+    display: flex;
+    }
+.activeTab{  
+    background-color: #ffffff;  
+    color: #4979D1;
+    border-radius: 0;
+    /* border-bottom: 2px solid #4979D1;
+    border-radius: 8px;
+    box-shadow: rgba(30, 30, 117, 0.2) 0px 7px 20px 0px; */
+
+}
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
+}
+.blue{
+    background-color: blue;
+}
+ 
+.login_logo{
+    height: 25em;
+}
+.login_logo_container{
+    display: flex;
+    align-items: center;
+    height: 15em;
+}
+.Common_login_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    height: 70vh;    
+    background-color: white;
+    border: none;   
+    /* border-radius: 1em; */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* height: 75vh;
+    width: 30vw;   */
+}
+.form_container{  
+    border-radius: 1em;
+    display: flex;    
+    justify-content: center;
+    align-items: center;  
+    flex-direction: column;
+    gap: 1em;
+}
+.loginBtn{
+    height: 3em;
+    width: 15em;
+    background-color: #4979D1;
+    border: none;
+    border-radius: 0.4em;
+    color: white;
+}

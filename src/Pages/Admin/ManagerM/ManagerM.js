@@ -1,41 +1,35 @@
 import { Button, IconButton } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react'
-import DeleteIcon from "@mui/icons-material/Delete";
+import React, { useEffect, useState } from 'react'
 import "./managerM.css";
-import salesRepApi from '../../../Api/salesRepApi';
 import { Link } from 'react-router-dom';
 import { Delete } from '@mui/icons-material';
+import { manager, managerDelete } from '../../../Api/managerApi';
 
 
 function ManagerM() {
 
   const [managerData, setManagerData] = useState([]);
-  const dataFetchedRef = useRef(false);
 
 
   const managerDataHandle = async (data)=>{
-    data.map((salesRep)=>{
-      return setManagerData(salesRepData => [...salesRepData, salesRep.name]);
+    data.map((manager)=>{
+      return setManagerData((managerData) => [...managerData, manager]);
     })}
 
 
-  const handleDeleteUser = (id)=>{
-      /*call salerep delte api*/
-  }
-  const handleAddUser= (id)=>{
-    salesRepApi.user().create().then(response=>{
-      managerDataHandle(response.data)
-  }).catch(err=>console.log(err))
-  }
+    const handleDeleteManager = (id) => {
+      setManagerData((prevData) => prevData.filter((manager) => manager.managerID !== id));
+      managerDelete().delete(id).catch(err=>console.log(err));
+      console.log(managerData);
+    }
+ 
 
   useEffect(() => {
-    if (dataFetchedRef.current) return;
-      dataFetchedRef.current = true;
-      salesRepApi.user().fetchAll().then(response=>{
-        managerDataHandle(response.data)
+      manager().fetchAll().then(response=>{
+        console.log(response);
+        setManagerData(response.data)
     }).catch(err=>console.log(err))
-  },[]
-  );
+  });
 
   return (
     <div className="managerM-container">
@@ -69,33 +63,18 @@ function ManagerM() {
                 </tr>
               </thead>
               <tbody>
-                {/* {managerData.map((manager) => {
+                {managerData.map((manager) => {
                   return [
-                    <tr key={manager.id}>
-                      <td>{manager.id}</td>
-                      <td>{manager.name}</td>
+                    <tr key={manager.managerID}>
+                      <td>{manager.managerID}</td>
+                      <td>{manager.fName}</td>
                       <td>{manager.address}</td>
                       <td>{manager.phoneNo}</td>
-                      <td>{manager.NIC}</td>
-                      <td><IconButton><Delete className='deleteManager'/></IconButton></td>
+                      <td>{manager.nic}</td>
+                      <td><IconButton onClick={()=>handleDeleteManager(manager.managerID)}><Delete className='deleteManager'/></IconButton></td>
                     </tr>,
                   ];
-                })} */}
-                <tr>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td><IconButton><Delete className='deleteManager'/></IconButton></td>
-                </tr>
-                <tr>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                  <td>gg</td>
-                </tr>
+                })}
               </tbody>
             </table>
           </div>

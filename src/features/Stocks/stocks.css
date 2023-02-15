@@ -11,6 +11,13 @@
     justify-content: space-between;
     
 }
+.stocks-table-container{
+    height: 50vh;
+    overflow: auto;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(87, 101, 195, 0.2) 0px 5px 18px 0px;
+}
 .stocks-table{
     width:80vw;
     height: 50vh;

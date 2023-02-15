@@ -3,15 +3,21 @@ import { baseUrl } from "./apiConfig";
 
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {
-    user(url = baseUrl + 'User'){
+export function
+    salesRep(url = baseUrl + 'SalesRep'){
         return{
             fetchAll :()=>axios.get(url),
             create :newRecord => axios.post(url,newRecord),
 
         }
     }
-       
+
+export function salesRepDelete(url = baseUrl + 'SalesRep/'){
+    return{
+        delete:(id)=>axios.delete(url+id,id)
+    }
 }
+       
+
 
 

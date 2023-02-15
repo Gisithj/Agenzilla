@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './stocks.css'
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
-import {item,items, leastItems, mostItems} from '../../Api/stocksApi'
+import {item, leastItems, mostItems} from '../../Api/stocksApi'
 
 function Stocks(props) {
 
@@ -60,7 +60,7 @@ function Stocks(props) {
             <table className='stocks-table'>
                 <thead>
                     <tr>
-                        <th>Batch No</th>
+                        <th>Item_ID</th>
                         <th>Name</th>
                         <th>Quantity</th>
                     </tr>
@@ -68,8 +68,8 @@ function Stocks(props) {
                 <tbody>
                     {stocksList.map((item)=>{
                         return[
-                        <tr key={item.itemID}>
-                            <td>{item.batchID}</td>
+                        <tr key={item.id}>
+                            <td>{item.id}</td>
                             <td>{item.name}</td>
                             <td>{item.qty}</td>
                         </tr>

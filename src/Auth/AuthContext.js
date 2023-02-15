@@ -1,6 +1,5 @@
 import React from "react";
-import getUser from "../Api/userApi";
-import { userLogin } from "../Api/registerUser";
+import { adminLogin, managerLogin, salesRepLogin } from "../Api/loginUserApi";
 // import history from "./history";
 
 const AuthStateContext = React.createContext();
@@ -42,14 +41,43 @@ function AuthProvider(props) {
   );
 }
 
-async function doLogin(dispatch, user) {
+async function doLoginSalesRep(dispatch, user) {
   try {
     
     dispatch({ status: "pending" });
-    console.log(user);
-    var result = await (await userLogin().create(user)).data;
+    var result = await (await salesRepLogin().create(user)).data;
+    dispatch({
+      status: "resolved",
+      user: result.user,
+      error: null
+    });
+  } catch (error) {
+    dispatch({ status: "rejected", error });
+  }
+}
+async function doLoginManager(dispatch, user) {
+  try {
+    
+    dispatch({ status: "pending" });
+    var result = await (await managerLogin().create(user)).data;
     
     console.log("here");
+    dispatch({
+      status: "resolved",
+      user: result.user,
+      error: null
+    });
+    
+  } catch (error) {
+    dispatch({ status: "rejected", error });
+  }
+}
+
+async function doLoginAdmin(dispatch, user) {
+  try {
+    
+    dispatch({ status: "pending" });
+    var result = await (await adminLogin().create(user)).data;
     dispatch({
       status: "resolved",
       user: result.user,
@@ -65,4 +93,4 @@ function doLogout(dispatch) {
 //   history.push("/");
 }
 
-export { AuthProvider, useAuthState, useAuthDispatch, doLogin, doLogout };
+export { AuthProvider, useAuthState, useAuthDispatch, doLoginManager, doLoginSalesRep,doLoginAdmin, doLogout };

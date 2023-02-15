@@ -23,7 +23,7 @@ function Profile() {
         <div className='profile-detail'>
             <div className='detail-group'>
                 <div className='details'>
-                    <p className='detail-title'>FIrst Name</p>
+                    <p className='detail-title'>First Name</p>
                     <p>{loggedUser.fName}</p>
                 </div>
                 {/* <div className='details'>

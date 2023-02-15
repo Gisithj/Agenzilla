@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./addManger.css";
 import { Button } from "@mui/material";
+
 import FormField from "../../../components/formField/FormField";
+import { managerRegistration } from "../../../Api/registerUserApi";
+import { useNavigate } from "react-router-dom";
 function AddManger() {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
@@ -37,6 +40,7 @@ function AddManger() {
   const handleEmail = (value) => {
     setEmail(value);
   };
+  const navigate = useNavigate();
 
   const handleAddSalesRep = ()=>{
     const saleRep = {
@@ -45,11 +49,12 @@ function AddManger() {
       "lname": lName,
       "address": address,
       "phoneNo": contactNO,
-      "userType": "SalesRep",
       "nic": nic,
       "email": email,
       "password":password
     }
+    managerRegistration().create(saleRep).catch((err) => console.log(err));
+    navigate("/admin/managers");
   }
 
   console.log(userName,password,nic);
