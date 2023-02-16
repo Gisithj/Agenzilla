@@ -5,7 +5,6 @@ import "./FormField.css";
 function FormField(props) {
 
   const handleInputChange = (inputValue) =>{
-    console.log(inputValue);
     props.handleChange(inputValue);
   }
   

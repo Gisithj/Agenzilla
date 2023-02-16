@@ -4,10 +4,12 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import storeApi, { store } from "../../../Api/storeApi";
+import  { store } from "../../../Api/storeApi";
 import SuggestComboBox from "../../../components/suggest-combo-box/suggestComboBox";
 import FormField from "../../../components/formField/FormField";
 import { item } from "../../../Api/stocksApi";
+import { orderPlacement } from "../../../Api/ordersApi";
+import { useAuthState } from "../../../Auth/AuthContext";
 
 function OrderPlacement(props) {
   const [storeData, setStoreData] = useState([]);
@@ -18,6 +20,8 @@ function OrderPlacement(props) {
   const [orderItems, setOrderItems] = useState([]);
   const [nextId, setNextId] = useState(1);
   const dataFetchedRef = useRef(false);
+  const { user: loggedUser } = useAuthState();
+  const salesID = loggedUser.salesRepID;
 
   const handleStoreName = (storeNameValue) => {
     setStoreName(storeNameValue);
@@ -38,8 +42,8 @@ function OrderPlacement(props) {
     if (beverageName !== "" || quantity !== "") {
       var orderItem = {
         id: nextId,
-        beverageName: beverageName,
-        quantity: quantity,
+        itemName: beverageName,
+        qty: quantity,
       };
       setNextId(nextId + 1);
       setOrderItems([...orderItems, orderItem]);
@@ -79,6 +83,16 @@ function OrderPlacement(props) {
       }).catch((err) => console.log(err));
 
   }, []);
+
+  const handleOrderPlacement = ()=>{
+    const order = {
+      "storeName":storeName,
+      "salesRepID":salesID,
+      "itemQuantities":orderItems
+
+    }
+    orderPlacement().create(order).catch((err)=>console.log(err));
+  }
 
   if (!storeData) {
     return;
@@ -135,6 +149,7 @@ function OrderPlacement(props) {
                 },
               ]}
               variant="contained"
+              onClick={handleOrderPlacement}
             >
               Place Order
             </Button>
@@ -153,10 +168,10 @@ function OrderPlacement(props) {
               {orderItems.map((item) => {
                 return [
                   <tr key={item.id}>
-                    <td>{item.beverageName}</td>
-                    <td>{item.beverageName}</td>
+                    <td>{item.id}</td>
+                    <td>{item.itemName}</td>
                     <td className="lastColumnWithDeleteIcon">
-                      <div>{item.quantity}</div>
+                      <div>{item.qty}</div>
                       <div>
                         <IconButton
                           variant="outlined"

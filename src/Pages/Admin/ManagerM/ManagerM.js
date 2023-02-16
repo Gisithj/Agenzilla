@@ -11,10 +11,10 @@ function ManagerM() {
   const [managerData, setManagerData] = useState([]);
 
 
-  const managerDataHandle = async (data)=>{
-    data.map((manager)=>{
-      return setManagerData((managerData) => [...managerData, manager]);
-    })}
+  // const managerDataHandle = async (data)=>{
+  //   data.map((manager)=>{
+  //     return setManagerData((managerData) => [...managerData, manager]);
+  //   })}
 
 
     const handleDeleteManager = (id) => {

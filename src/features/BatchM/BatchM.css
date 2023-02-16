@@ -1,0 +1,53 @@
+.managerM-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 80px;
+    gap: 2em;
+}
+.managerM-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.managerM-table-container{
+    height: 80vh;
+    overflow: auto;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(87, 101, 195, 0.2) 0px 5px 18px 0px;
+}
+.managerM-table{
+    width:80vw;
+    overflow: auto;
+    height: 50vh;
+    border-radius: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.managerM-table table{
+    border: none;
+    overflow: auto;
+}
+.managerM-table tr{
+    height: 10px;
+
+}
+.managerM-table th{
+    background-color: #4979D1;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+.managerM-table th,.managerM-table td {
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.managerM-table tr:hover{
+    background-color: rgb(227, 227, 227);
+}
+.deleteManager{
+    color: red;
+}

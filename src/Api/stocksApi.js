@@ -12,8 +12,6 @@ export function
 
         }
     }
-    
-       
 
 export function mostItems(url = baseUrl + 'Items/MostItem'){
     return{
@@ -24,6 +22,20 @@ export function mostItems(url = baseUrl + 'Items/MostItem'){
 }
 
 export function leastItems(url = baseUrl + 'Items/LeastItem'){
+    return{
+        fetchAll :()=>axios.get(url)
+        
+
+    }
+}
+export function addBatch(url = baseUrl + 'Stocks/StoreStock'){
+    return{
+        create :(batch)=>axios.post(url,batch)
+        
+
+    }
+}
+export function Batch(url = baseUrl + 'Stocks'){
     return{
         fetchAll :()=>axios.get(url)
         

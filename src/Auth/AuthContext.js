@@ -74,10 +74,12 @@ async function doLoginManager(dispatch, user) {
 }
 
 async function doLoginAdmin(dispatch, user) {
+  console.log("called");
   try {
     
     dispatch({ status: "pending" });
     var result = await (await adminLogin().create(user)).data;
+    console.log(result.user);
     dispatch({
       status: "resolved",
       user: result.user,

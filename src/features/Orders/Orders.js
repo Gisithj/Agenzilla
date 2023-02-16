@@ -64,8 +64,8 @@ function Orders(props) {
                 <td>{order.orderID}</td>
                 <td>{order.storeName}</td>
                 <td>{order.date}</td>
-                <td>{order.date}</td>
-                <td>{order.date}</td>
+                <td>{order.storeAddress}</td>
+                <td>{order.isDelivered ?"Delivered":"Pending"}</td>
                 {props.user !=="salesRep" && <td><IconButton
                       onClick={()=>handleOrderDelete(order.orderID)}                     
                       ><Delete className="deleteStore"/></IconButton></td>}

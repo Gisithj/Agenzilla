@@ -7,7 +7,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import PersonIcon from '@mui/icons-material/Person';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import { NavLink} from "react-router-dom";
-import InsightsIcon from '@mui/icons-material/Insights';
+import CorporateFareIcon from '@mui/icons-material/CorporateFare';
 import GroupsIcon from '@mui/icons-material/Groups';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
@@ -23,8 +23,9 @@ function NavBar(props) {
         </NavLink>}
         
         {props.user ==="admin" && <NavLink to={`managers`}><div className='nav-bar-item'><ManageAccountsIcon fontSize='large'/></div></NavLink>}
+        {props.user !=="salesRep" && <NavLink to={`batches`}><div className='nav-bar-item'><CorporateFareIcon fontSize='large'/></div></NavLink>}
         {props.user !=="salesRep" && <NavLink to={`manageSalesRep`}><div className='nav-bar-item'><GroupsIcon fontSize='large'/></div></NavLink>}
-        {props.user !=="salesRep" && <NavLink to={`manageSales`}><div className='nav-bar-item'><InsightsIcon fontSize='large'/></div></NavLink>}
+        {/* {props.user !=="salesRep" && <NavLink to={`manageSales`}><div className='nav-bar-item'><InsightsIcon fontSize='large'/></div></NavLink>} */}
         <NavLink to={`stocks`}><div className='nav-bar-item'><BarChartIcon fontSize='large'/></div></NavLink> 
         {props.user ==="salesRep" && <NavLink to={`delivery`}><div className='nav-bar-item'><LocalShippingIcon fontSize='large'/></div></NavLink>}              
         <NavLink to={`shops`}><div className='nav-bar-item'><StoreIcon fontSize='large'/></div></NavLink>

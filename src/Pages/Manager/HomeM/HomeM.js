@@ -1,4 +1,7 @@
+import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { deliveryCounts, orderCount } from "../../../Api/ordersApi";
 import { BarChart } from "../../../features/Charts/BarChaart";
 import { UserData } from "../../../features/Charts/data";
 import { DoughnutChart } from "../../../features/Charts/DoughnutChart";
@@ -11,6 +14,8 @@ function HomeM() {
   // const[topSalesRep,setTopSalesRep] = useState([]);
   // const[totalSales,setTotalSales] = useState();
   // const[totalOrders,setTotalOrders] = useState();
+   const[deliveryCount,setDeliveryCount] = useState("");
+   const[orderCounter,setOrderCount] = useState("");
 
   // const handleTopSelling = (value)=>{
   //   setTopSeeling(value)
@@ -49,11 +54,11 @@ function HomeM() {
   };
 
   const doughnutData = {
-    labels: ["Blue", "Purple"],
+    labels: ["deliveredCount", "notDeliveredCount"],
     datasets: [
       {
         label: "# of Votes",
-        data: [12, 19],
+        data: [deliveryCount.deliveredCount, deliveryCount.notDeliveredCount],
         backgroundColor: [
           "rgba(54, 162, 235, 0.2)",
           "rgba(153, 102, 255, 0.2)",
@@ -133,7 +138,38 @@ function HomeM() {
   //     },
   //   ],
   // };
+  const user = useNavigate();
+  const handleAddBatch =()=>{
+    
+    user("/manager/addBatch");
+  }
+const handleDeliveryCount=async(response)=>{
+  console.log("called");
+  await setDeliveryCount(response.data)
+}
+const handleOrderCount=async(response)=>{
+  console.log("called");
+  await setOrderCount(response.data)
+}
+  useEffect(() => {
+    deliveryCounts()
+      .fetchAll()
+      .then((response) => {
+        console.log(response);
+       handleDeliveryCount(response);
+      })
+      .catch((err) => console.log(err));
 
+    orderCount().fetchAll()
+    .then((response) => {
+      console.log(response);
+     handleOrderCount(response);
+    })
+    .catch((err) => console.log(err));
+  },[]);
+if(!deliveryCount){
+  return null;
+}
   return (
     <div className="home-container">
       <div className="home-header">
@@ -177,12 +213,12 @@ function HomeM() {
                 <h3>Daily Summary</h3>
               </div>
               <div class="sales-summary-content">
-                <h6>Total Sales</h6>
-                <p>Rs.100,000.00</p>
+                <h6>Total no of Sales persons</h6>
+                <p>12</p>
               </div>
               <div class="sales-summary-content">
                 <h6>Total Orders</h6>
-                <p>1000</p>
+                <p>{orderCounter}</p>
               </div>
             </div>
           </div>
@@ -223,6 +259,7 @@ function HomeM() {
           <div className="order-chart">
             <LineChart options={options} data={data} />
           </div>
+          
           {/* <div className="orderCompletion-chart">
             <DoughnutChart
               data={doughnutData}

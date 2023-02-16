@@ -17,7 +17,7 @@ function DashboardM(props) {
       return navigate("/login");
   
     }else if(loggedUser.managerID){
-      return navigate(`/${props.userS}/dashboard`);
+      return navigate(`/manager/dashboard`);
     }
   },[])
 

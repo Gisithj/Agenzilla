@@ -4,23 +4,26 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import storeApi, { store } from "../../../Api/storeApi";
+import  { store } from "../../../Api/storeApi";
 import SuggestComboBox from "../../../components/suggest-combo-box/suggestComboBox";
 import FormField from "../../../components/formField/FormField";
-import { item } from "../../../Api/stocksApi";
+import { addBatch, item } from "../../../Api/stocksApi";
+import { useAuthState } from "../../../Auth/AuthContext";
 
 function BatchPlacement(props) {
   const [storeData, setStoreData] = useState([]);
   const [beverageData, setBeverageData] = useState([]);
-  const [storeName, setStoreName] = useState("");
+  const [companyName , setCompanyName] = useState("");
   const [beverageName, setBeverageName] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [price, setPrice] = useState("");
   const [batchItems, setBatchItems] = useState([]);
   const [nextId, setNextId] = useState(1);
   const dataFetchedRef = useRef(false);
+  const { user: loggedUser } = useAuthState();
 
-  const handleStoreName = (storeNameValue) => {
-    setStoreName(storeNameValue);
+  const handleCompanyName = (storeNameValue) => {
+    setCompanyName(storeNameValue);
     //console.log(storeName);
   };
   const handleBeverageName = (beverageNameValue) => {
@@ -31,18 +34,24 @@ function BatchPlacement(props) {
     setQuantity(quantityValue);
     // console.log(quantity);
   };
+  const handlePrice = (quantityValue) => {
+    setPrice(quantityValue);
+    // console.log(quantity);
+  };
 
   const handleClick = () => {
-    //console.log(beverageName);
-    //console.log(storeName);
+    console.log("called");
     if (beverageName !== "" || quantity !== "") {
       var batchItem = {
         id: nextId,
-        beverageName: beverageName,
-        quantity: quantity,
+        managerId:loggedUser.managerID,
+        itemName: beverageName,
+        qty: quantity,
+        price:price
       };
       setNextId(nextId + 1);
       setBatchItems([...batchItems, batchItem]);
+      console.log(batchItems);
     }
     //console.log(orderItems);
   };
@@ -63,6 +72,17 @@ function BatchPlacement(props) {
     });
   };
 
+  const handleAddBatch = ()=>{
+    console.log("called");
+    const batch = {
+      "companyName":companyName,
+      "items":batchItems
+
+    }
+    console.log(batch);
+    addBatch().create(batch).catch((err)=>console.log(err));
+  }
+
   useEffect(() => {
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
@@ -77,6 +97,7 @@ function BatchPlacement(props) {
       item().fetchAll().then((response)=>{
         handleBeverageList(response.data)
       }).catch((err) => console.log(err));
+
 
   }, []);
 
@@ -94,17 +115,10 @@ function BatchPlacement(props) {
           <form action="">
             <div className="batch-placement">
               <div className="batch-content">
-                <SuggestComboBox
-                  name="Company name"
-                  handleChange={handleStoreName}
-                  storeList={storeData}
+                <FormField
+                  placeHolder="Company name"
+                  handleChange={handleCompanyName}
                 />
-              </div>
-              <div className="batch-content">
-              <FormField
-                      placeHolder="BatchID"
-                      handleChange={handleQuantity}
-                    />
               </div>
               <div className="batch-details">
                 <div className="batch-details-head">
@@ -119,6 +133,12 @@ function BatchPlacement(props) {
                     <FormField
                       placeHolder="Quantity"
                       handleChange={handleQuantity}
+                    />
+                  </div>
+                  <div className="batch-content">
+                    <FormField
+                      placeHolder="Price"
+                      handleChange={handlePrice}
                     />
                   </div>
                 </div>
@@ -141,6 +161,7 @@ function BatchPlacement(props) {
                 },
               ]}
               variant="contained"
+              onClick={handleAddBatch}
             >
               Place Order
             </Button>

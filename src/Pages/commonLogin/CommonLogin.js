@@ -73,7 +73,7 @@ function CommonLogin() {
     }
 
   return (
-    <div className="sales-container">
+    <div className="commonlogin-container">
       
       <div className="login-tab-cards">
         <div className={`tab ${isManagerActive ? "activeTab" : ""}`} onClick={() => handleClick("isManagerActive")}>

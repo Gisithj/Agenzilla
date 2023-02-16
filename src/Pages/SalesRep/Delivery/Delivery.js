@@ -2,12 +2,18 @@ import { Delete } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import React, { useEffect, useState } from 'react'
-import { orders } from '../../../Api/ordersApi';
+import { orderDelivered, orders } from '../../../Api/ordersApi';
 import './delivery.css'
 
 function Delivery() {
 
   const [orderList, setOrderList] = useState([]);
+
+  const handleDeliveryDone = (id) => {
+    console.log(id);
+    setOrderList(orderList.filter((a) => a.id !== id));
+    orderDelivered().create(id).catch((err=>console.log(err)))
+  };
 
     useEffect(() => {
           orders()
@@ -20,9 +26,7 @@ function Delivery() {
         
       }, []);
 
-  const handleDeliveryDone =()=>{
-    
-  }
+
 
   return (
     <div className="delivery-container">
@@ -44,58 +48,15 @@ function Delivery() {
             orderList.map((order)=>{
               return[
                 <tr key={order.orderID}>
-              <td>order.orderID</td>
-              <td>order.storeID</td>
-              <td>order.itemID</td>
-              <td colSpan={order.deliveryStaus === "delivered" ? 2:undefined}>Pending</td>
-              <td>{order.deliveyStaus !== "delivered" && <IconButton><TaskAltIcon/></IconButton>}</td>
+              <td>{order.orderID}</td>
+              <td>{order.storeID}</td>
+              <td>{order.itemID}</td>
+              <td colSpan={order.isDelivered ==="false" ? 2:undefined}>Pending</td>
+              <td>{order.isDelivered === "false" && <IconButton onClick={()=>handleDeliveryDone(order.orderID)}><TaskAltIcon/></IconButton>}</td>
             </tr>
               ]
             })
           }
-            <tr>
-              <td>10</td>
-              <td>Sprite</td>
-              <td>300</td>
-              <td>Pending</td>
-              <td><IconButton onClick={()=>handleDeliveryDone}><TaskAltIcon/></IconButton></td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Sprite</td>
-              <td>300</td>
-              <td>Delivered</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Sprite</td>
-              <td>300</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Sprite</td>
-              <td>300</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Sprite</td>
-              <td>300</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Sprite</td>
-              <td>300</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Sprite</td>
-              <td>300</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Sprite</td>
-              <td>300</td>
-            </tr>
           </tbody>
         </table>
       </div>

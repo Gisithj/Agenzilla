@@ -22,13 +22,14 @@ import AddStore from './features/AddStore/AddStore';
 import AddManger from './Pages/Admin/AddManger/AddManger';
 import ManagerM from './Pages/Admin/ManagerM/ManagerM';
 import CommonLogin from './Pages/commonLogin/CommonLogin';
-import BatchPlacement from './features/AddBatch/OrderPlacement/BatchPlacement';
+import BatchPlacement from './features/AddBatch/BatchPlacement/BatchPlacement';
+import BatchM from './features/BatchM/BatchM';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App/>,  
     errorElement: <ErrorPage/>,
     children: [
       {
@@ -117,10 +118,13 @@ const router = createBrowserRouter([
           {
             path: "/manager/order-placement",
             element: <OrderPlacement user="manager"/>,           
+          },{
+            path:"/manager/batches",
+            element:<BatchM user ="manager"/>
           },
           {
             path:"/manager/addBatch",
-            element:<AddBatch user="manager"/>
+            element:<BatchPlacement user="manager"/>
           }
 
         ],
@@ -177,6 +181,10 @@ const router = createBrowserRouter([
           {
             path: "/admin/order-placement",
             element: <OrderPlacement user="admin"/>,           
+          },
+          {
+            path:"/admin/batches",
+            element:<BatchM user ="admin"/>
           },
           {
             path:"/admin/addBatch",
