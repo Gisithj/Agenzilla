@@ -28,7 +28,7 @@ export function
             fetchAll:()=>axios.get(url)
         }
     }
-    export function orderDelivered(url = baseUrl + '/Orders/'){
+    export function orderDelivered(url = baseUrl + 'Orders?orderId=3/'){
         return{
             create:(id)=>axios.post(url+id,id)
         }
