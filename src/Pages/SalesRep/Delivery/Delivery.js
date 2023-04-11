@@ -24,7 +24,7 @@ function Delivery() {
           .catch((err) => console.log(err));
 
         
-      }, []);
+      });
 
 
 
@@ -49,10 +49,10 @@ function Delivery() {
               return[
                 <tr key={order.orderID}>
               <td>{order.orderID}</td>
-              <td>{order.storeID}</td>
-              <td>{order.itemID}</td>
-              <td colSpan={order.isDelivered ==="false" ? 2:undefined}>Pending</td>
-              <td>{order.isDelivered === "false" && <IconButton onClick={()=>handleDeliveryDone(order.orderID)}><TaskAltIcon/></IconButton>}</td>
+              <td>{order.storeName}</td>
+              <td>{order.storeAddress}</td>
+              <td>{order.isDelivered?"Delivered":"Pending"}</td>
+              <td>{order.isDelivered === false && <IconButton onClick={()=>handleDeliveryDone(order.orderID)}><TaskAltIcon/></IconButton>}</td>
             </tr>
               ]
             })

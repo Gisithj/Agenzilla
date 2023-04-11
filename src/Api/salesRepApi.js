@@ -17,6 +17,11 @@ export function salesRepDelete(url = baseUrl + 'SalesRep/'){
         delete:(id)=>axios.delete(url+id,id)
     }
 }
+export function topSalesRep(url = baseUrl + 'Orders/api/salesreps-top3'){
+    return{
+        fetchAll:(id)=>axios.get(url)
+    }
+}
        
 
 
